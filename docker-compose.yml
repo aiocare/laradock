@@ -531,6 +531,7 @@ services:
         - "${MYSQL_PORT}:3306"
       networks:
         - backend
+      platform: linux/amd64
 
 ### Percona ################################################
     percona:
