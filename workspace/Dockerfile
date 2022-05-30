@@ -1748,3 +1748,7 @@ RUN apt-get clean && \
 
 # Set default work directory
 WORKDIR /var/www
+
+COPY docker-entrypoint.sh .
+
+ENTRYPOINT ["docker-entrypoint.sh"]
