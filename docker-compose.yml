@@ -5,6 +5,9 @@ networks:
     driver: ${NETWORKS_DRIVER}
   backend:
     driver: ${NETWORKS_DRIVER}
+  default:
+    external:
+      name: aiocare-network
 volumes:
   mysql:
     driver: ${VOLUMES_DRIVER}
@@ -292,6 +295,7 @@ services:
         - docker-in-docker:/certs/client
       ports:
         - "${PHP_FPM_XDEBUG_PORT}:9003"
+        - 9000:9000
       expose:
         - "9000"
       extra_hosts:
@@ -529,8 +533,6 @@ services:
         - ${MYSQL_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
       ports:
         - "${MYSQL_PORT}:3306"
-      networks:
-        - backend
       platform: linux/amd64
 
 ### Percona ################################################
